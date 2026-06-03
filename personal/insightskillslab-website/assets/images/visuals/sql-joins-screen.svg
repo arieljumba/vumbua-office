@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="560" viewBox="0 0 900 560">
+  <rect width="900" height="560" fill="#111827"/>
+  <rect x="28" y="24" width="844" height="512" rx="16" fill="#0b1220" stroke="#334155"/>
+  <text x="52" y="72" fill="#a7f3d0" font-family="monospace" font-size="24">JOIN Practice: learners + payments</text>
+  <rect x="52" y="98" width="796" height="2" fill="#334155"/>
+  <text x="52" y="145" fill="#93c5fd" font-family="monospace" font-size="22">SELECT l.name, c.course, p.amount</text>
+  <text x="52" y="182" fill="#fcd34d" font-family="monospace" font-size="22">FROM learners l</text>
+  <text x="52" y="219" fill="#86efac" font-family="monospace" font-size="22">JOIN courses c ON l.course_id = c.id</text>
+  <text x="52" y="256" fill="#c4b5fd" font-family="monospace" font-size="22">LEFT JOIN payments p ON l.id = p.learner_id;</text>
+  <rect x="52" y="300" width="796" height="210" rx="12" fill="#0f172a" stroke="#334155"/>
+  <text x="72" y="338" fill="#67e8f9" font-family="monospace" font-size="20">name           course            amount</text>
+  <text x="72" y="372" fill="#e2e8f0" font-family="monospace" font-size="20">Amina          SQL Basics        15000</text>
+  <text x="72" y="404" fill="#e2e8f0" font-family="monospace" font-size="20">Brian          Python Data       15000</text>
+  <text x="72" y="436" fill="#e2e8f0" font-family="monospace" font-size="20">Clara          Power BI Pro      15000</text>
+</svg>

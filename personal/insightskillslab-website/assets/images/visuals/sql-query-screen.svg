@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="560" viewBox="0 0 900 560">
+  <rect width="900" height="560" fill="#0f172a"/>
+  <rect x="24" y="24" width="852" height="512" rx="16" fill="#111827" stroke="#334155"/>
+  <rect x="24" y="24" width="852" height="42" rx="16" fill="#1f2937"/>
+  <circle cx="52" cy="45" r="8" fill="#ef4444"/>
+  <circle cx="76" cy="45" r="8" fill="#f59e0b"/>
+  <circle cx="100" cy="45" r="8" fill="#22c55e"/>
+  <text x="130" y="50" fill="#93c5fd" font-family="monospace" font-size="18">sql_lab/query_01.sql</text>
+  <text x="56" y="120" fill="#93c5fd" font-family="monospace" font-size="24">SELECT department, COUNT(*) AS learners</text>
+  <text x="56" y="160" fill="#fcd34d" font-family="monospace" font-size="24">FROM enrollments</text>
+  <text x="56" y="200" fill="#86efac" font-family="monospace" font-size="24">WHERE active = TRUE</text>
+  <text x="56" y="240" fill="#c4b5fd" font-family="monospace" font-size="24">GROUP BY department</text>
+  <text x="56" y="280" fill="#fca5a5" font-family="monospace" font-size="24">ORDER BY learners DESC;</text>
+  <rect x="56" y="330" width="788" height="170" rx="10" fill="#0b1220" stroke="#334155"/>
+  <text x="76" y="365" fill="#67e8f9" font-family="monospace" font-size="20">department      learners</text>
+  <text x="76" y="400" fill="#e2e8f0" font-family="monospace" font-size="20">SQL             124</text>
+  <text x="76" y="430" fill="#e2e8f0" font-family="monospace" font-size="20">Python          98</text>
+  <text x="76" y="460" fill="#e2e8f0" font-family="monospace" font-size="20">Power BI        76</text>
+</svg>

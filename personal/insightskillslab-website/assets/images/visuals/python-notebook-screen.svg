@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="560" viewBox="0 0 900 560">
+  <rect width="900" height="560" fill="#0b1220"/>
+  <rect x="20" y="18" width="860" height="524" rx="16" fill="#111827" stroke="#334155"/>
+  <rect x="20" y="18" width="860" height="44" rx="16" fill="#1f2937"/>
+  <text x="42" y="47" fill="#fbbf24" font-family="monospace" font-size="18">python_lab/analysis_notebook.ipynb</text>
+  <rect x="52" y="90" width="796" height="120" rx="10" fill="#0f172a" stroke="#334155"/>
+  <text x="70" y="128" fill="#93c5fd" font-family="monospace" font-size="21">import pandas as pd</text>
+  <text x="70" y="160" fill="#86efac" font-family="monospace" font-size="21">df = pd.read_csv('enrollments.csv')</text>
+  <text x="70" y="192" fill="#c4b5fd" font-family="monospace" font-size="21">df.groupby('track')['score'].mean()</text>
+  <rect x="52" y="236" width="796" height="260" rx="10" fill="#0f172a" stroke="#334155"/>
+  <rect x="86" y="420" width="84" height="44" fill="#60a5fa"/>
+  <rect x="204" y="374" width="84" height="90" fill="#34d399"/>
+  <rect x="322" y="332" width="84" height="132" fill="#fbbf24"/>
+  <rect x="440" y="296" width="84" height="168" fill="#f472b6"/>
+  <text x="70" y="274" fill="#e2e8f0" font-family="monospace" font-size="20">Average Score by Track</text>
+  <text x="70" y="305" fill="#94a3b8" font-family="monospace" font-size="16">SQL, Excel, Python, Power BI</text>
+</svg>
