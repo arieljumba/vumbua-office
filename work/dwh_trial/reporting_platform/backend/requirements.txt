@@ -1,0 +1,11 @@
+Django
+djangorestframework
+django-filter
+psycopg2-binary
+gunicorn
+uvicorn
+redis
+celery
+django-cors-headers
+python-dotenv
+djangorestframework-simplejwt
