@@ -8,6 +8,18 @@ def test_home_has_program_story_and_enquiry_cta(client):
     assert b"Power BI makes it clear." in response.data
     assert b"industry-experienced analytics professionals" in response.data
     assert b"Enquire about the next cohort" in response.data
+    assert b"mailto:info@vumbua.co.ke" in response.data
+    assert b"tel:+254705572368" in response.data
+    assert b"https://wa.me/254705572368" in response.data
+
+
+def test_contact_page_has_direct_contact_options(client):
+    response = client.get("/contact")
+
+    assert response.status_code == 200
+    assert b"info@vumbua.co.ke" in response.data
+    assert b"0705 572 368" in response.data
+    assert b"Chat with Vumbua" in response.data
 
 
 def test_program_covers_four_months_and_price(client):

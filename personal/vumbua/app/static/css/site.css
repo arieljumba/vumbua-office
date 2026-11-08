@@ -229,6 +229,11 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .footer-links { display: flex; justify-content: flex-end; flex-wrap: wrap; gap: 12px 22px; }
 .footer-links a, .footer-bottom a { color: #aab4c3; font-size: 10px; text-decoration: none; }
 .footer-links a:hover, .footer-bottom a:hover { color: #fff; }
+.contact-methods { display: grid; gap: 13px; margin-top: 29px; }
+.contact-methods a { display: grid; gap: 4px; width: fit-content; color: #273244; text-decoration: none; }
+.contact-methods a:hover strong { color: #4268cc; }
+.contact-methods span { color: #788392; font-family: "DM Mono", monospace; font-size: 9px; letter-spacing: .08em; text-transform: uppercase; }
+.contact-methods strong { font-size: 12px; font-weight: 650; transition: color .18s ease; }
 .footer-bottom { min-height: 51px; display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 10px max(40px, calc((100% - 1280px)/2)); border-top: 1px solid rgba(255,255,255,.09); color: #748093; font-family: "DM Mono", monospace; font-size: 8px; }
 
 .page-hero-dark { position: relative; overflow: hidden; color: #f5f7fb; background: var(--navy); }
