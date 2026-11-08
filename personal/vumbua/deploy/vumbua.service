@@ -1,0 +1,16 @@
+[Unit]
+Description=Vumbua Flask application
+After=network.target
+
+[Service]
+User=vumbua
+Group=www-data
+WorkingDirectory=/srv/vumbua
+EnvironmentFile=/srv/vumbua/.env
+ExecStart=/srv/vumbua/.venv/bin/gunicorn --config /srv/vumbua/gunicorn.conf.py wsgi:app
+Restart=on-failure
+PrivateTmp=true
+NoNewPrivileges=true
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+{% block title %}The 3-in-1 Data Analytics Program — Vumbua{% endblock %}
+{% block description %}See the full four-month SQL, Python and Power BI curriculum, practical project work, and program investment for Vumbua's flagship analytics program.{% endblock %}
+{% block content %}
+<section class="page-hero page-hero-dark">
+  <div class="content-width page-hero-inner">
+    <p class="eyebrow eyebrow-light"><span class="eyebrow-dot"></span> The flagship program · 4 months</p>
+    <h1>3-in-1 Data<br>Analytics <span class="text-gradient">Program.</span></h1>
+    <p class="page-hero-lead">SQL, Python and Power BI taught as one practical workflow—from asking a question of the data to communicating an insight that helps someone act.</p>
+    <div class="hero-actions"><a class="button button-blue" href="{{ url_for('enquiries.contact') }}#enquiry">Enquire about the next cohort <span>↗</span></a><a class="button button-quiet" href="#curriculum">Explore the curriculum ↓</a></div>
+    <div class="program-stats"><span>SQL + Python + Power BI</span><i></i><span>4 months</span><i></i><span>Real-world project</span><i></i><span>Certificate of completion</span></div>
+  </div>
+</section>
+<section class="program-logic section section-paper">
+  <div class="content-width">
+    <p class="eyebrow">The connection matters</p>
+    <div class="program-logic-line"><span><small>01</small> SQL <em>gets the data</em></span><b>→</b><span><small>02</small> Python <em>works with the data</em></span><b>→</b><span><small>03</small> Power BI <em>communicates the insight</em></span></div>
+    <p class="program-logic-note">Then you use that insight to solve a real business problem. Each tool has its place; the work makes the connection.</p>
+  </div>
+</section>
+<section class="section curriculum-section" id="curriculum">
+  <div class="content-width">
+    <div class="section-heading section-heading-split reveal"><div><p class="eyebrow">A guided progression</p><h2>Four months of<br><em>building capability.</em></h2></div><p>Each month adds a layer. By the end, you can explain the choices behind an analysis—not only operate the tools.</p></div>
+    <div class="curriculum-list">
+      <article class="curriculum-month reveal">
+        <div class="curriculum-aside"><span>MONTH</span><strong>01</strong><small>QUERY</small></div>
+        <div class="curriculum-body"><div class="curriculum-title"><div><p class="eyebrow">Find the signal in a database</p><h3>SQL for Data Analytics</h3></div><span class="curriculum-mark">{ }</span></div>
+          <p>Learn how relational data is organised and how to ask focused questions across tables. Practise writing queries that are accurate, readable and useful for a business decision.</p>
+          <div class="topic-columns"><div><h4>You'll work with</h4><p>Databases and tables · SELECT and filtering · Aggregations · Joins · Subqueries and CTEs · Window functions · Data quality</p></div><div><h4>Questions to investigate</h4><p>Sales performance · Customer activity · Branch comparisons · Portfolio analysis</p></div></div>
+        </div>
+      </article>
+      <article class="curriculum-month reveal">
+        <div class="curriculum-aside"><span>MONTH</span><strong>02</strong><small>TRANSFORM</small></div>
+        <div class="curriculum-body"><div class="curriculum-title"><div><p class="eyebrow">Make the data analysis-ready</p><h3>Python for Data Analytics</h3></div><span class="curriculum-mark">ƒx</span></div>
+          <p>Use Python as a practical way to repeat analysis, handle larger files and prepare reliable datasets. Pandas and NumPy are introduced in the context of real data tasks.</p>
+          <div class="topic-columns"><div><h4>You'll work with</h4><p>Python fundamentals · Pandas and NumPy · Cleaning and transformations · Exploratory analysis · Visualisation</p></div><div><h4>Things to make easier</h4><p>Automating reports · Cleaning large datasets · Analysing customer behaviour · Preparing dashboard data</p></div></div>
+        </div>
+      </article>
+      <article class="curriculum-month reveal">
+        <div class="curriculum-aside"><span>MONTH</span><strong>03</strong><small>COMMUNICATE</small></div>
+        <div class="curriculum-body"><div class="curriculum-title"><div><p class="eyebrow">Give people a clear view of performance</p><h3>Power BI &amp; Business Storytelling</h3></div><span class="curriculum-mark">▥</span></div>
+          <p>Build a considered model, create useful measures and design interactive reports that explain what changed and why it matters.</p>
+          <div class="topic-columns"><div><h4>You'll work with</h4><p>Power Query · Data modelling and relationships · DAX · KPIs and time intelligence</p></div><div><h4>How it comes together</h4><p>Interactive dashboards · Choosing useful visualisations · Business storytelling · Presenting the finding</p></div></div>
+        </div>
+      </article>
+      <article class="curriculum-month curriculum-capstone reveal">
+        <div class="curriculum-aside"><span>MONTH</span><strong>04</strong><small>APPLY</small></div>
+        <div class="curriculum-body"><div class="curriculum-title"><div><p class="eyebrow">Carry a question all the way through</p><h3>Real-World Analytics Project</h3></div><span class="curriculum-mark">↗</span></div>
+          <p>Bring the workflow together on an end-to-end project: start with a business question, inspect and prepare the data, then communicate what it means.</p>
+          <div class="capstone-flow"><span>RAW DATA</span><b>→</b><span>SQL</span><b>→</b><span>PYTHON</span><b>→</b><span>POWER BI</span><b>→</b><span>BUSINESS INSIGHT</span></div>
+          <div class="project-chips"><span>Customer behaviour</span><span>Sales performance</span><span>Loan portfolio</span><span>Banking transactions</span><span>Executive KPIs</span></div>
+          <p class="capstone-note">The finished project is yours to explain and showcase as practical work.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+<section class="section section-dark ecosystem-section program-ecosystem">
+  <div class="content-width ecosystem-layout">
+    <div class="section-intro reveal"><p class="eyebrow eyebrow-light">Tools within a wider ecosystem</p><h2>Know where your<br>skills <em>fit.</em></h2><p>SQL, Python and Power BI are part of a broader data landscape. The program introduces the connections without promising expertise in every adjacent discipline.</p></div>
+    <div class="ecosystem-map reveal">
+      <div class="ecosystem-row"><span>Business systems</span><b>→</b><span>Databases / data warehouse</span></div>
+      <div class="ecosystem-row ecosystem-focus"><span>SQL</span><b>→</b><span>Python</span><b>→</b><span>Power BI</span><small>YOUR ANALYTICS WORKFLOW</small></div>
+      <div class="ecosystem-row"><span>APIs</span><span>Automation</span><span>Cloud analytics</span></div>
+      <div class="ecosystem-row"><span>AI &amp; machine learning</span><span>Big data &amp; data engineering</span><span>Microsoft Fabric &amp; Azure</span></div>
+      <p>Learn the foundations that help you keep exploring.</p>
+    </div>
+  </div>
+</section>
+<section class="section section-paper certificate-section">
+  <div class="content-width certificate-layout certificate-light reveal">
+    <div><p class="eyebrow">Successfully complete the program</p><h2>A certificate that<br>records the <em>work.</em></h2><p>Learners who successfully complete the course receive a Vumbua Certificate of Completion: 3-in-1 Data Analytics Program.</p></div>
+    <div class="certificate-mark certificate-mark-light"><span>VUMBUA</span><strong>Certificate of Completion</strong><small>3-in-1 Data Analytics Program</small><i>SQL · PYTHON · POWER BI</i></div>
+  </div>
+</section>
+<section class="investment-section" id="investment">
+  <div class="content-width investment-panel reveal">
+    <div class="investment-copy"><p class="eyebrow eyebrow-light">Program Investment</p><h2>Clear costs.<br><em>Four months.</em></h2><p>The program is taught as one connected learning experience. Monthly pricing reflects the four-month commitment.</p><div class="investment-total"><strong>KES 80,000</strong><span>Total program investment</span></div></div>
+    <div class="investment-breakdown"><div><span>Monthly fee</span><strong>KES 20,000</strong></div><div><span>Duration</span><strong>4 months</strong></div><div><span>Total</span><strong>KES 80,000</strong></div><p>Corporate training is available on enquiry; the format and scope can be discussed for your team.</p><a class="button button-blue" href="{{ url_for('enquiries.contact') }}#enquiry">Enquire about the next cohort <span>↗</span></a></div>
+  </div>
+</section>
+{% endblock %}

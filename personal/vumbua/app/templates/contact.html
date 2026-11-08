@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}Enquire — Vumbua Data Analytics Program{% endblock %}
+{% block description %}Ask Vumbua about the next 3-in-1 Data Analytics Program cohort, your learning format or practical corporate analytics training.{% endblock %}
+{% block content %}
+<section class="contact-hero">
+  <div class="content-width contact-hero-layout">
+    <div><p class="eyebrow eyebrow-light"><span class="eyebrow-dot"></span> Contact Vumbua</p><h1>Let's talk about<br><span class="text-gradient">your next step.</span></h1><p>Ask about the next cohort, the learning format or practical analytics training for your team. A little context helps us make the conversation useful.</p></div>
+    <div class="contact-aside"><span>THE PROGRAM</span><strong>SQL → Python → Power BI</strong><p>One four-month journey, built around practical work.</p><a href="{{ url_for('pages.program') }}">Explore the program ↗</a></div>
+  </div>
+</section>
+<section class="contact-form-section" id="enquiry">
+  <div class="content-width contact-form-layout">
+    <div class="contact-note"><p class="eyebrow">Enquiry form</p><h2>Tell us a little<br>about <em>you.</em></h2><p>Complete the form and the Vumbua team will follow up about your enquiry.</p><p class="privacy-note">Your details are used to respond to this enquiry. Please don't include sensitive personal information.</p></div>
+    <form class="enquiry-form" action="{{ url_for('enquiries.submit_enquiry') }}" method="post" novalidate>
+      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+      <div class="form-grid">
+        <div class="form-field {% if errors.get('full_name') %}has-error{% endif %}"><label for="full_name">Full name <span>*</span></label><input id="full_name" name="full_name" autocomplete="name" required maxlength="120" value="{{ request.form.get('full_name', '') }}" aria-describedby="full_name-error"><small id="full_name-error" class="field-error">{{ errors.get('full_name', '') }}</small></div>
+        <div class="form-field {% if errors.get('email') %}has-error{% endif %}"><label for="email">Email address <span>*</span></label><input id="email" name="email" type="email" autocomplete="email" required maxlength="254" value="{{ request.form.get('email', '') }}" aria-describedby="email-error"><small id="email-error" class="field-error">{{ errors.get('email', '') }}</small></div>
+        <div class="form-field {% if errors.get('phone') %}has-error{% endif %}"><label for="phone">Phone number <span>*</span></label><input id="phone" name="phone" type="tel" autocomplete="tel" required maxlength="30" value="{{ request.form.get('phone', '') }}" aria-describedby="phone-error"><small id="phone-error" class="field-error">{{ errors.get('phone', '') }}</small></div>
+        <div class="form-field {% if errors.get('occupation') %}has-error{% endif %}"><label for="occupation">Current occupation <span>*</span></label><input id="occupation" name="occupation" required maxlength="120" value="{{ request.form.get('occupation', '') }}" aria-describedby="occupation-error"><small id="occupation-error" class="field-error">{{ errors.get('occupation', '') }}</small></div>
+        <div class="form-field {% if errors.get('experience_level') %}has-error{% endif %}"><label for="experience_level">Current experience level <span>*</span></label><select id="experience_level" name="experience_level" required aria-describedby="experience_level-error"><option value="">Choose one</option>{% for item in experience_levels %}<option value="{{ item }}" {% if request.form.get('experience_level') == item %}selected{% endif %}>{{ item }}</option>{% endfor %}</select><small id="experience_level-error" class="field-error">{{ errors.get('experience_level', '') }}</small></div>
+        <div class="form-field {% if errors.get('learning_format') %}has-error{% endif %}"><label for="learning_format">Learning format <span>*</span></label><select id="learning_format" name="learning_format" required aria-describedby="learning_format-error"><option value="">Choose one</option>{% for item in learning_formats %}<option value="{{ item }}" {% if request.form.get('learning_format') == item %}selected{% endif %}>{{ item }}</option>{% endfor %}</select><small id="learning_format-error" class="field-error">{{ errors.get('learning_format', '') }}</small></div>
+        <div class="form-field form-field-wide {% if errors.get('enquiry_type') %}has-error{% endif %}"><label for="enquiry_type">What are you enquiring about? <span>*</span></label><select id="enquiry_type" name="enquiry_type" required aria-describedby="enquiry_type-error"><option value="">Choose one</option>{% for item in enquiry_types %}<option value="{{ item }}" {% if request.form.get('enquiry_type') == item %}selected{% endif %}>{{ item }}</option>{% endfor %}</select><small id="enquiry_type-error" class="field-error">{{ errors.get('enquiry_type', '') }}</small></div>
+        <div class="form-field form-field-wide {% if errors.get('reason') %}has-error{% endif %}"><label for="reason">What would you like to learn or solve? <span>*</span></label><textarea id="reason" name="reason" rows="5" required minlength="10" maxlength="2000" aria-describedby="reason-hint reason-error">{{ request.form.get('reason', '') }}</textarea><small id="reason-hint" class="field-hint">A few lines are enough. What prompted your enquiry?</small><small id="reason-error" class="field-error">{{ errors.get('reason', '') }}</small></div>
+      </div>
+      <div class="form-actions"><p>Fields marked <span>*</span> are required.</p><button class="button button-blue" type="submit">Send your enquiry <span>↗</span></button></div>
+    </form>
+  </div>
+</section>
+{% endblock %}

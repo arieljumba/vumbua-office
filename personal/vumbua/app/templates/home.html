@@ -1,0 +1,177 @@
+{% extends "base.html" %}
+{% block title %}Vumbua — Turn Data Into Decisions{% endblock %}
+{% block description %}A practical 4-month data analytics program combining SQL, Python and Power BI through hands-on learning, real datasets and business problems.{% endblock %}
+{% block content %}
+<section class="hero">
+  <div class="hero-grain" aria-hidden="true"></div>
+  <div class="hero-inner content-width">
+    <div class="hero-copy">
+      <p class="eyebrow eyebrow-light"><span class="eyebrow-dot"></span> A practical data analytics program</p>
+      <h1>Turn data<br>into <span class="text-gradient">decisions.</span></h1>
+      <p class="hero-intro">A practical 4-month data analytics program combining SQL, Python and Power BI through hands-on learning, real datasets and real-world business problems.</p>
+      <div class="hero-actions">
+        <a class="button button-blue" href="{{ url_for('pages.program') }}">Explore the Program <span aria-hidden="true">↗</span></a>
+        <a class="button button-quiet" href="{{ url_for('insights.market_insights') }}">View Market Insights <span aria-hidden="true">→</span></a>
+      </div>
+      <div class="hero-proof" aria-label="Program summary">
+        <span>SQL + Python + Power BI</span><i></i><span>4 months</span><i></i><span>Real projects</span><i></i><span>Certificate</span>
+      </div>
+    </div>
+    <div class="hero-art" aria-label="An illustration of data moving through SQL, Python and Power BI into a business decision">
+      <div class="art-caption"><span class="live-dot"></span> ONE CONNECTED WORKFLOW</div>
+      <div class="flow-lines" aria-hidden="true"><span></span><span></span><span></span></div>
+      <div class="flow-node node-source"><small>01 / RETRIEVE</small><strong>SQL</strong><span>Ask better questions</span><b class="node-symbol">{ }</b></div>
+      <div class="flow-node node-transform"><small>02 / ANALYSE</small><strong>Python</strong><span>Make data useful</span><b class="node-symbol">ƒx</b></div>
+      <div class="flow-node node-present"><small>03 / COMMUNICATE</small><strong>Power BI</strong><span>Make insight visible</span><b class="mini-chart" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></b></div>
+      <div class="art-outcome"><span>THE OUTCOME</span><strong>A decision someone can act on.</strong></div>
+      <div class="art-grid" aria-hidden="true"></div>
+    </div>
+    <a class="scroll-cue" href="#who">Scroll to explore <span>↓</span></a>
+  </div>
+</section>
+
+<section class="section section-paper" id="who">
+  <div class="content-width section-grid">
+    <div class="section-intro reveal">
+      <p class="eyebrow">01 / Who it's for</p>
+      <h2>Your starting point<br>is <em>enough.</em></h2>
+      <p>You don't need to arrive knowing SQL, Python or Power BI. Bring a problem-solving mindset and curiosity about the data around you.</p>
+    </div>
+    <div class="audience-list reveal">
+      <article><span>01</span><div><h3>Starting in analytics</h3><p>Build a practical foundation from the first query to a finished dashboard.</p></div><b aria-hidden="true">↗</b></article>
+      <article><span>02</span><div><h3>Changing direction</h3><p>Connect your existing experience to the way data teams solve business problems.</p></div><b aria-hidden="true">↗</b></article>
+      <article><span>03</span><div><h3>Working with reports already</h3><p>Move beyond spreadsheets and repetitive reporting into deeper analysis.</p></div><b aria-hidden="true">↗</b></article>
+      <article><span>04</span><div><h3>Building a stronger team</h3><p>Organizations can enquire about practical, tailored training for their people.</p></div><b aria-hidden="true">↗</b></article>
+    </div>
+  </div>
+</section>
+
+<section class="section section-dark workflow-section">
+  <div class="content-width">
+    <div class="section-heading reveal">
+      <p class="eyebrow eyebrow-light">02 / Why these tools together</p>
+      <h2>One workflow.<br><span class="text-gradient">Three useful tools.</span></h2>
+      <p>Real analytics work isn't a set of disconnected software lessons. It's a chain of decisions about data.</p>
+    </div>
+    <div class="workflow-steps reveal">
+      <article><span class="step-index">01</span><p class="mono-label">RETRIEVE</p><h3>SQL gets the data.</h3><p>Find the right records, connect tables and turn business questions into queries.</p></article>
+      <span class="step-connector" aria-hidden="true">→</span>
+      <article><span class="step-index">02</span><p class="mono-label">WORK WITH</p><h3>Python shapes it.</h3><p>Clean, transform, analyse and prepare data for repeatable work.</p></article>
+      <span class="step-connector" aria-hidden="true">→</span>
+      <article><span class="step-index">03</span><p class="mono-label">COMMUNICATE</p><h3>Power BI makes it clear.</h3><p>Build a useful view of performance and explain what the numbers mean.</p></article>
+    </div>
+    <p class="workflow-conclusion reveal">Learn the tools. Understand the data. <strong>Solve real problems.</strong></p>
+  </div>
+</section>
+
+<section class="section section-paper">
+  <div class="content-width">
+    <div class="section-heading section-heading-split reveal">
+      <div><p class="eyebrow">03 / A four-month progression</p><h2>Each month gives<br>the next one <em>context.</em></h2></div>
+      <a class="text-link" href="{{ url_for('pages.program') }}">See the full curriculum <span>↗</span></a>
+    </div>
+    <div class="month-line reveal">
+      <article><div class="month-tag">MONTH 01 <span>01</span></div><h3>Query with SQL</h3><p>Ask questions of databases, join the right tables and check data quality.</p><span class="month-result">A clear answer from raw records</span></article>
+      <article><div class="month-tag">MONTH 02 <span>02</span></div><h3>Analyse with Python</h3><p>Use Pandas to clean, reshape, explore and automate the analysis.</p><span class="month-result">A reliable, reusable dataset</span></article>
+      <article><div class="month-tag">MONTH 03 <span>03</span></div><h3>Explain with Power BI</h3><p>Model the data, define KPIs and make the result useful to others.</p><span class="month-result">A dashboard with a point of view</span></article>
+      <article><div class="month-tag">MONTH 04 <span>04</span></div><h3>Bring it together</h3><p>Work through a complete business problem from raw data to insight.</p><span class="month-result">A project you can walk through</span></article>
+    </div>
+  </div>
+</section>
+
+<section class="section section-bluewash">
+  <div class="content-width application-layout">
+    <div class="section-intro reveal">
+      <p class="eyebrow">04 / The work behind the charts</p>
+      <h2>Useful analysis<br>starts with a<br><em>real question.</em></h2>
+      <p>Practice with business-shaped problems: not just how a feature works, but when it helps answer the question in front of you.</p>
+    </div>
+    <div class="application-board reveal">
+      <div class="board-top"><span>QUESTIONS WORTH ASKING</span><span>01 — 04</span></div>
+      <div><b>01</b><p>Which customers are becoming less active?</p><span>Customer activity</span></div>
+      <div><b>02</b><p>What explains a change in branch performance?</p><span>Branch performance</span></div>
+      <div><b>03</b><p>Where is the sales trend shifting?</p><span>Sales analysis</span></div>
+      <div><b>04</b><p>How is a loan portfolio changing over time?</p><span>Portfolio analysis</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-paper ecosystem-section">
+  <div class="content-width ecosystem-layout">
+    <div class="section-intro reveal">
+      <p class="eyebrow">05 / Beyond the tools</p>
+      <h2>Part of a much<br><em>bigger picture.</em></h2>
+      <p>AI, machine learning, cloud platforms and data engineering all depend on the same fundamentals: data that can be found, understood and trusted.</p>
+      <p class="supporting-copy">This program builds those foundations. It doesn't claim to make you an expert in every corner of the data industry.</p>
+    </div>
+    <div class="ecosystem-map reveal">
+      <div class="ecosystem-row"><span>BUSINESS SYSTEMS</span><b>→</b><span>Databases &amp;<br>data warehouses</span></div>
+      <div class="ecosystem-row ecosystem-focus"><span>SQL</span><b>→</b><span>Python</span><b>→</b><span>Power BI</span><small>THE PROGRAM WORKFLOW</small></div>
+      <div class="ecosystem-row"><span>Automation</span><span>APIs</span><span>Cloud analytics</span></div>
+      <div class="ecosystem-row"><span>AI &amp; machine learning</span><span>Big data</span><span>Microsoft Fabric &amp; Azure</span></div>
+      <p>Learn where the work fits. Keep building from there.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section section-dark trainer-section" id="about">
+  <div class="content-width trainer-layout">
+    <div class="trainer-stamp reveal" aria-hidden="true"><span>FIELD<br>NOTES</span><b>V.</b><i>REAL WORK<br>REAL DATA</i></div>
+    <div class="trainer-copy reveal">
+      <p class="eyebrow eyebrow-light">06 / How we teach</p>
+      <h2>Grounded in how<br>analytics is <em>used.</em></h2>
+      <p>The program is taught by industry-experienced analytics professionals who understand how SQL, Python and Power BI show up in real working environments.</p>
+      <p>Sessions focus on decisions, trade-offs and practical workflows—not just remembering where a button lives.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section section-paper">
+  <div class="content-width project-layout">
+    <div class="section-intro reveal">
+      <p class="eyebrow">07 / Work worth showing</p>
+      <h2>Build the whole<br>story, not just<br><em>the chart.</em></h2>
+      <p>In month four, choose a business question and carry it through the complete analytics workflow.</p>
+    </div>
+    <div class="project-options reveal">
+      <div class="project-flow"><span>RAW DATA</span><b>→</b><span>SQL</span><b>→</b><span>PYTHON</span><b>→</b><span>POWER BI</span><b>→</b><span>INSIGHT</span></div>
+      <div class="project-list">
+        <span>Customer behaviour analysis</span><span>Sales performance dashboard</span>
+        <span>Loan portfolio analysis</span><span>Banking transaction analysis</span>
+        <span>Executive KPI dashboard</span>
+      </div>
+      <p class="supporting-copy">Finish with a practical project you can explain and showcase as your own work.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section certificate-band">
+  <div class="content-width certificate-layout reveal">
+    <div><p class="eyebrow eyebrow-light">08 / Completion</p><h2>A record of the work<br>you've <em>completed.</em></h2></div>
+    <div class="certificate-mark"><span>VUMBUA</span><strong>Certificate of Completion</strong><small>3-in-1 Data Analytics Program</small><i>SQL · PYTHON · POWER BI</i></div>
+  </div>
+  <div class="content-width"><p class="certificate-note">Learners who successfully complete the program receive a Vumbua Certificate of Completion. No external accreditation is implied.</p></div>
+</section>
+
+<section class="section section-dark insights-teaser">
+  <div class="content-width insight-teaser-layout reveal">
+    <div><p class="eyebrow eyebrow-light">09 / Market Insights</p><h2>Explore the data<br>behind the <em>opportunity.</em></h2><p>A small demonstration dashboard showing how analytics can make patterns easier to explore. Sample records are synthetic—not live job listings.</p><a class="button button-outline-light" href="{{ url_for('insights.market_insights') }}">Explore Market Insights <span>↗</span></a></div>
+    <div class="teaser-graphic" aria-hidden="true"><span>SQL</span><div><i style="--h:35%"></i><i style="--h:52%"></i><i style="--h:45%"></i><i style="--h:70%"></i><i style="--h:57%"></i><i style="--h:88%"></i><i style="--h:76%"></i></div><b>Explore a filtered view ↗</b></div>
+  </div>
+</section>
+
+<section class="investment-strip">
+  <div class="content-width investment-layout">
+    <div><p class="eyebrow">10 / Program investment</p><h2>Four months.<br>One connected skill set.</h2><p>Clear pricing, with the detail where it belongs: in the program.</p></div>
+    <div class="investment-amount"><span>KES 20,000 <small>/ month</small></span><b>KES 80,000 total · 4 months</b></div>
+    <a class="button button-blue" href="{{ url_for('pages.program') }}#investment">Program details <span>↗</span></a>
+  </div>
+</section>
+
+<section class="closing-cta">
+  <div class="content-width closing-layout">
+    <div><p class="eyebrow eyebrow-light">11 / Start with a conversation</p><h2>Bring your questions.<br><span class="text-gradient">We'll start there.</span></h2><p>Ask about the next cohort, the learning format or practical training for your organization.</p></div>
+    <a class="button button-blue button-large" href="{{ url_for('enquiries.contact') }}#enquiry">Enquire about the next cohort <span>↗</span></a>
+  </div>
+</section>
+{% endblock %}

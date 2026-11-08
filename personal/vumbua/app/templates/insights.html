@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% block title %}Vumbua Market Insights — Explore the Data{% endblock %}
+{% block description %}An interactive demonstration dashboard that shows how Vumbua teaches practical market data analysis. Clearly labelled synthetic records, filters and methodology.{% endblock %}
+{% block head %}<script src="https://cdn.plot.ly/plotly-2.35.2.min.js" defer></script>{% endblock %}
+{% block content %}
+<section class="insights-hero">
+  <div class="content-width insights-hero-inner">
+    <div><p class="eyebrow eyebrow-light"><span class="eyebrow-dot"></span> Vumbua Market Insights</p><h1>Explore data<br>about <span class="text-gradient">data work.</span></h1><p>See how roles, skills and locations can be explored with data. The examples on this page are made-up practice records, not real job listings.</p></div>
+    <div class="data-status"><span class="status-tag"><i></i> PRACTICE DATA</span><strong>Learn to explore.<br>Don't read as a forecast.</strong><p>These example records do not show what employers are hiring for right now.</p></div>
+  </div>
+</section>
+<section class="dashboard-section">
+  <div class="content-width">
+    <section class="insights-guide" aria-labelledby="insights-guide-title">
+      <div class="guide-intro"><p class="eyebrow">Before you explore</p><h2 id="insights-guide-title">What is this dashboard?</h2><p>This is a practice dashboard about data-related jobs. It shows how you can use filters and charts to look for patterns in roles, skills, locations and work arrangements.</p></div>
+      <div class="guide-steps" aria-label="How to explore the dashboard">
+        <article><span>01</span><div><h3>Choose what to look at</h3><p>Pick a location, job role, skill or experience level. You can also choose a date range.</p></div></article>
+        <article><span>02</span><div><h3>Apply your filters</h3><p>Select “Apply filters”. The numbers and charts will update to match your choices.</p></div></article>
+        <article><span>03</span><div><h3>Compare and start again</h3><p>Look across the charts for differences. Choose “Clear” to see all the examples again.</p></div></article>
+      </div>
+      <div class="guide-sources">
+        <div><p class="eyebrow">Where the data comes from</p><h3>Sources &amp; limits</h3><p class="source-summary" data-source-summary>{{ metadata.source }}</p></div>
+        <ul class="source-list" data-source-list>
+          {% for source in sources %}
+            <li>
+              {% if source.url %}<a href="{{ source.url }}" target="_blank" rel="noopener noreferrer">{{ source.label }} <span>↗</span></a>
+              {% else %}<span>{{ source.label }}</span>{% endif %}
+            </li>
+          {% endfor %}
+        </ul>
+        <p class="guide-source-note">{% if metadata.demo == "true" %}These are made-up example records created for practice. They are not real vacancies and cannot tell you what the job market is like today.{% else %}The records and their dates come from the source listed here. We have not independently checked whether the source includes every vacancy.{% endif %}</p>
+      </div>
+    </section>
+    <div class="dashboard-heading"><div><p class="eyebrow">Explore the example</p><h2>What do you notice?</h2></div><p>These charts change when you apply filters. Try one choice at a time and compare the results.</p></div>
+    <div class="dashboard" data-dashboard data-endpoint="{{ url_for('insights.market_insights_api') }}">
+      <form class="filter-bar" data-filters>
+        <label>Location<select name="location"><option value="">All locations</option>{% for item in options.locations %}<option value="{{ item }}">{{ item }}</option>{% endfor %}</select></label>
+        <label>Job role<select name="role"><option value="">All roles</option>{% for item in options.roles %}<option value="{{ item }}">{{ item }}</option>{% endfor %}</select></label>
+        <label>Skill mentioned<select name="skill"><option value="">All skills</option>{% for item in options.skills %}<option value="{{ item }}">{{ item }}</option>{% endfor %}</select></label>
+        <label>Experience<select name="experience"><option value="">All levels</option>{% for item in options.experience %}<option value="{{ item }}">{{ item }}</option>{% endfor %}</select></label>
+        <label>Posted on or after<input type="date" name="start_date" min="{{ options.min_date }}" max="{{ options.max_date }}"></label>
+        <label>Posted on or before<input type="date" name="end_date" min="{{ options.min_date }}" max="{{ options.max_date }}"></label>
+        <button type="submit" class="button button-blue">Show results <span>↗</span></button>
+        <button type="reset" class="filter-reset">Clear</button>
+      </form>
+      <p class="dashboard-status" role="status" aria-live="polite" data-status>Loading the example records…</p>
+      <div class="metric-row" data-metrics>
+        <article class="metric-card"><span>RECORDS SHOWN</span><strong data-metric="opportunities">—</strong><small>examples matching your choices</small></article>
+        <article class="metric-card"><span>JOB ROLES</span><strong data-metric="roles">—</strong><small>different role names</small></article>
+        <article class="metric-card"><span>LOCATIONS</span><strong data-metric="locations">—</strong><small>different places listed</small></article>
+        <article class="metric-card core-skills-card"><span>RECORDS THAT MENTION EACH SKILL</span><div><b>SQL <strong data-skill="SQL">—</strong></b><b>Python <strong data-skill="Python">—</strong></b><b>Power BI <strong data-skill="Power BI">—</strong></b></div><small>One record may mention more than one skill.</small></article>
+      </div>
+      <div class="chart-grid">
+        <article class="chart-panel chart-wide"><div class="chart-title"><div><span>01 / SKILLS</span><h3>Which skills appear in the records?</h3></div><small>Records that mention each skill</small></div><div class="chart" data-chart="skills" role="img" aria-label="Bar chart showing counts of records mentioning each skill"></div></article>
+        <article class="chart-panel chart-wide"><div class="chart-title"><div><span>02 / DATES</span><h3>When were records posted?</h3></div><small>Grouped by month</small></div><div class="chart" data-chart="trend" role="img" aria-label="Line chart showing records over time"></div></article>
+        <article class="chart-panel"><div class="chart-title"><div><span>03 / JOB ROLES</span><h3>What kinds of roles appear?</h3></div></div><div class="chart" data-chart="roles" role="img" aria-label="Bar chart showing records by role"></div></article>
+        <article class="chart-panel"><div class="chart-title"><div><span>04 / PLACES</span><h3>Where are the roles listed?</h3></div></div><div class="chart" data-chart="locations" role="img" aria-label="Bar chart showing records by location"></div></article>
+        <article class="chart-panel"><div class="chart-title"><div><span>05 / WORK ARRANGEMENTS</span><h3>How is the work described?</h3></div></div><div class="chart chart-donut" data-chart="work_modes" role="img" aria-label="Donut chart showing records by work mode"></div></article>
+      </div>
+      <div class="data-provenance">
+        <article><span>SOURCE FILE OR FEED</span><p data-source>{{ metadata.source }}</p></article>
+        <article><span>LAST UPDATED</span><p data-updated>{{ metadata.updated_at }}</p></article>
+        <article class="methodology"><span>HOW TO READ THIS</span><p data-methodology>{{ metadata.methodology }}</p></article>
+      </div>
+      <p class="demo-disclaimer">{% if metadata.demo == "true" %}Practice data only. These made-up records are not real jobs and do not describe the current job market.{% else %}These records reflect the source shown above. A source may be incomplete or out of date; check it before making decisions.{% endif %}</p>
+    </div>
+  </div>
+</section>
+<section class="insights-explainer section section-paper">
+  <div class="content-width insights-explainer-layout">
+    <div class="section-intro"><p class="eyebrow">What this example teaches</p><h2>Useful charts<br>start with <em>careful questions.</em></h2></div>
+    <p>Before trusting a trend, check where the data came from, what it includes and when it was updated. This dashboard makes the steps visible: filter the records, compare a measure, and keep the limitations alongside the chart.</p>
+  </div>
+</section>
+{% endblock %}
+{% block scripts %}<script src="{{ url_for('static', filename='js/insights.js') }}" defer></script>{% endblock %}

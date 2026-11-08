@@ -1,0 +1,28 @@
+from __future__ import annotations
+
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
+
+class Config:
+    ENVIRONMENT = os.getenv("FLASK_ENV", "development").lower()
+    DEVELOPMENT_SECRET = "local-development-key-change-before-deploying"
+    SECRET_KEY = os.getenv("SECRET_KEY") or (
+        DEVELOPMENT_SECRET if ENVIRONMENT != "production" else ""
+    )
+    DATABASE_PATH = os.getenv("DATABASE_PATH") or "instance/vumbua.sqlite3"
+    MARKET_DATA_FILE = os.getenv("MARKET_DATA_FILE") or "instance/market_roles.csv"
+    MARKET_DATA_SOURCE_URL = os.getenv("MARKET_DATA_SOURCE_URL", "")
+    MARKET_DATA_SOURCE_FORMAT = (
+        os.getenv("MARKET_DATA_SOURCE_FORMAT") or "csv"
+    ).lower()
+    MARKET_DATA_TABLE_INDEX = int(os.getenv("MARKET_DATA_TABLE_INDEX", "0"))
+    LOG_LEVEL = os.getenv("LOG_LEVEL", "INFO")
+    LOG_FILE = os.getenv("LOG_FILE", "")
+    MAX_CONTENT_LENGTH = 16 * 1024
+    SESSION_COOKIE_HTTPONLY = True
+    SESSION_COOKIE_SAMESITE = "Lax"
+    SESSION_COOKIE_SECURE = ENVIRONMENT == "production"
+    PREFERRED_URL_SCHEME = "https" if ENVIRONMENT == "production" else "http"
