@@ -13,6 +13,8 @@ Vumbua's flagship course is the **3-in-1 Data Analytics Program**. It teaches SQ
 
 The program is for beginners, people changing careers, people who work with spreadsheets or reports, people building on existing analytics skills, and organizations looking for team training. Learners do not need previous SQL, Python or Power BI experience. Industry-experienced analytics professionals teach how the tools are used in working environments.
 
+Classes are live and cohort-based, meeting three times a week. Scheduling is flexible to accommodate learners' routines, and assignments provide practice between sessions. The next cohort starts in December.
+
 The program costs **KES 20,000 per month for four months (KES 80,000 total)**. Learners who successfully complete it receive the **Vumbua Certificate of Completion: 3-in-1 Data Analytics Program**. The certificate is not presented as an external accreditation.
 
 ## Pages visitors can use

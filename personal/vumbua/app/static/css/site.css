@@ -69,6 +69,8 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .hero h1, .page-hero h1, .insights-hero h1, .contact-hero h1 { margin: 0; font-size: clamp(56px, 7.7vw, 108px); font-weight: 700; letter-spacing: -.085em; line-height: .96; }
 .text-gradient { color: #81dded; background: linear-gradient(105deg, #f1f8ff 0%, #82e1ed 44%, #8ba7ff 100%); background-clip: text; -webkit-text-fill-color: transparent; }
 .hero-intro { max-width: 570px; margin: 26px 0 0; color: #b7c1d1; font-size: clamp(15px, 1.3vw, 18px); line-height: 1.8; }
+.hero-cohort-note { max-width: 570px; margin: 12px 0 0; color: #97a4b8; font-size: 11px; line-height: 1.8; }
+.hero-cohort-note strong, .page-hero-cohort strong { color: #b6eaf0; font-weight: 650; }
 .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 22px; margin-top: 32px; }
 .button { min-height: 48px; display: inline-flex; align-items: center; justify-content: center; gap: 15px; padding: 0 19px; border: 1px solid transparent; border-radius: 3px; font-size: 12px; font-weight: 700; text-decoration: none; transition: transform .2s ease, background .2s ease, border-color .2s ease, box-shadow .2s ease; cursor: pointer; }
 .button:hover { transform: translateY(-2px); }
@@ -240,6 +242,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .page-hero-inner { position: relative; z-index: 1; padding-top: 103px; padding-bottom: 58px; }
 .page-hero h1 { max-width: 930px; font-size: clamp(58px, 8.5vw, 112px); }
 .page-hero-lead { max-width: 700px; margin: 26px 0 0; color: #b3bdcc; font-size: 16px; line-height: 1.85; }
+.page-hero-cohort { max-width: 700px; margin: 12px 0 0; color: #99a7ba; font-size: 12px; line-height: 1.8; }
 .program-stats { display: flex; flex-wrap: wrap; align-items: center; gap: 11px 15px; margin-top: 52px; padding-top: 21px; color: #8d9bad; border-top: 1px solid rgba(255,255,255,.13); font-family: "DM Mono", monospace; font-size: 9px; text-transform: uppercase; }
 .program-logic { padding: 53px 0 59px; }
 .program-logic-line { display: flex; flex-wrap: wrap; align-items: center; gap: 21px; color: #263248; font-size: clamp(15px, 2vw, 21px); font-weight: 700; letter-spacing: -.045em; }

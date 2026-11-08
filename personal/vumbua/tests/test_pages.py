@@ -7,6 +7,8 @@ def test_home_has_program_story_and_enquiry_cta(client):
     assert b"Python shapes it." in response.data
     assert b"Power BI makes it clear." in response.data
     assert b"industry-experienced analytics professionals" in response.data
+    assert b"Live, cohort-based classes meet three times a week" in response.data
+    assert b"Next cohort starts in December." in response.data
     assert b"Enquire about the next cohort" in response.data
     assert b"mailto:info@vumbua.co.ke" in response.data
     assert b"tel:+254705572368" in response.data
@@ -28,6 +30,9 @@ def test_program_covers_four_months_and_price(client):
     assert response.status_code == 200
     for phrase in (b"SQL for Data Analytics", b"Python for Data Analytics", b"Power BI", b"Real-World Analytics Project"):
         assert phrase in response.data
+    assert b"Live, cohort-based classes meet three times a week" in response.data
+    assert b"assignments give you practice between sessions" in response.data
+    assert b"Next cohort starts in December." in response.data
     assert b"KES 20,000" in response.data
     assert b"KES 80,000" in response.data
     assert b"Program Investment" in response.data
