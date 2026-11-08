@@ -25,6 +25,29 @@ Run the test suite:
 pytest
 ```
 
+## Deploy on Railway / Railpack
+
+The application includes `requirements.txt` for Railpack's Python detection and `start.sh` to launch Gunicorn on Railway's assigned port. For a service connected to the larger `ajumba/projects` repository, set the Railway service's **Root Directory** to:
+
+```text
+/personal/vumbua
+```
+
+If deploying from the standalone `arieljumba/vumbua-office` repository after the site files have been copied to its top level, use `/` (or leave Root Directory blank). Do not deploy the `ajumba/projects` repository from its top level: it contains unrelated `personal/` and `work/` folders, not the Flask application entry point.
+
+Set the Railway **Start Command** to `sh start.sh`. Add these variables in the service settings:
+
+```text
+FLASK_ENV=production
+SECRET_KEY=<a unique random value of at least 32 characters>
+DATABASE_PATH=/data/vumbua.sqlite3
+MARKET_DATA_FILE=/data/market_roles.csv
+```
+
+Attach a persistent Railway volume mounted at `/data` so enquiries and any refreshed market dataset survive new deployments. The app creates its SQLite database on startup. If no live market source has been configured, Market Insights continues to use and label the bundled synthetic practice records.
+
+The `.dockerignore` file excludes local configuration, virtual environments, caches and instance data from the build context.
+
 ## Market data
 
 The dashboard uses Pandas for validated records and filtered analysis and Plotly for its charts. The bundled CSV is intentionally synthetic: it is not a sample of current vacancies and must not be presented as actual hiring demand.
