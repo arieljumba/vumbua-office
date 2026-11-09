@@ -52,7 +52,7 @@ When a permitted real dataset is configured, the site shows its source and the s
 
 ### Contact
 
-The enquiry form lets a person ask about the individual program or corporate team training. It asks for contact details, current occupation, experience level, preferred learning format and what they would like to learn or solve. The form checks required fields and saves valid enquiries in the site's SQLite database.
+The enquiry form lets a person ask about the individual program or corporate team training. It asks for contact details, current occupation, experience level, preferred learning format and what they would like to learn or solve. The form checks required fields, saves valid enquiries in the site's SQLite database, and emails the enquiry to `info@vumbua.co.ke` through the configured SMTP service. If email delivery fails, the saved enquiry is retained and the visitor is told to contact Vumbua directly.
 
 ## How Market Insights data works
 

@@ -6,6 +6,7 @@ from flask import Blueprint, current_app, flash, redirect, render_template, requ
 
 from ..database import save_enquiry
 from ..models import ENQUIRY_TYPES, EXPERIENCE_LEVELS, LEARNING_FORMATS, Enquiry
+from ..services.mail import EmailDeliveryError, send_enquiry_email
 
 bp = Blueprint("enquiries", __name__)
 
@@ -65,5 +66,16 @@ def submit_enquiry():
             500,
         )
 
-    flash("Thanks for getting in touch. Your enquiry has been received.", "success")
+    try:
+        send_enquiry_email(enquiry)
+    except EmailDeliveryError:
+        current_app.logger.exception("Could not email a saved Vumbua enquiry")
+        flash(
+            "We saved your enquiry, but couldn't email Vumbua just now. "
+            "Please contact us directly at info@vumbua.co.ke or on WhatsApp "
+            "so we can respond.",
+            "error",
+        )
+    else:
+        flash("Thanks for getting in touch. Your enquiry has been sent to Vumbua.", "success")
     return redirect(url_for("enquiries.contact") + "#enquiry", code=303)

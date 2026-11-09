@@ -15,6 +15,7 @@ def app(tmp_path):
             "WTF_CSRF_ENABLED": False,
             "DATABASE_PATH": str(tmp_path / "test.sqlite3"),
             "MARKET_DATA_FILE": str(tmp_path / "market_roles.csv"),
+            "MAIL_SUPPRESS_SEND": True,
         }
     )
 

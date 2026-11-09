@@ -42,9 +42,18 @@ FLASK_ENV=production
 SECRET_KEY=<a unique random value of at least 32 characters>
 DATABASE_PATH=/data/vumbua.sqlite3
 MARKET_DATA_FILE=/data/market_roles.csv
+MAIL_SMTP_HOST=<mailbox provider SMTP host>
+MAIL_SMTP_PORT=587
+MAIL_SMTP_USERNAME=info@vumbua.co.ke
+MAIL_SMTP_PASSWORD=<mailbox password or app password>
+MAIL_FROM_ADDRESS=info@vumbua.co.ke
+MAIL_TO_ADDRESS=info@vumbua.co.ke
+MAIL_USE_STARTTLS=true
 ```
 
 Attach a persistent Railway volume mounted at `/data` so enquiries and any refreshed market dataset survive new deployments. The app creates its SQLite database on startup. If no live market source has been configured, Market Insights continues to use and label the bundled synthetic practice records.
+
+The contact form saves each enquiry in SQLite and emails its details to `MAIL_TO_ADDRESS`. Configure the SMTP host and credentials supplied by the mailbox provider in Railway's service variables; never commit the mailbox password. If email delivery fails, the enquiry remains saved and the form tells the visitor how to contact Vumbua directly.
 
 The `.dockerignore` file excludes local configuration, virtual environments, caches and instance data from the build context.
 
@@ -87,6 +96,8 @@ Filters are applied server-side for location, role, skill, experience and date r
 
 The enquiry form is protected by Flask-WTF CSRF tokens, validates fields server-side, and saves submissions to SQLite. Database access and the schema live behind `app/database.py`; form values are represented by `app/models.py`. This boundary keeps the application logic separate from the current SQLite driver when a PostgreSQL repository/driver is introduced.
 
+After saving an enquiry, the application sends a plain-text email to `MAIL_TO_ADDRESS` through the configured SMTP server. `MAIL_FROM_ADDRESS` should be an address authorized by the mailbox provider, and `MAIL_USE_STARTTLS` defaults to `true`. If the SMTP server is missing or unavailable, the form reports the delivery problem without discarding the saved enquiry.
+
 For production, set `DATABASE_PATH` to a persistent absolute path. SQLite is suitable for the initial single-host deployment; use PostgreSQL for multi-instance scaling or higher write concurrency. Enquiry data should be handled with appropriate retention, access controls and backups.
 
 ## Configuration
@@ -102,6 +113,12 @@ Copy `.env.example` to `.env`. Important settings:
 | `MARKET_DATA_SOURCE_URL` | Optional permitted public CSV/JSON/HTML source or local file |
 | `MARKET_DATA_SOURCE_FORMAT` | `csv`, `json` or `html` |
 | `MARKET_DATA_TABLE_INDEX` | Selected public HTML table index |
+| `MAIL_SMTP_HOST` / `MAIL_SMTP_PORT` | Outgoing mail server and port from the mailbox provider |
+| `MAIL_SMTP_USERNAME` / `MAIL_SMTP_PASSWORD` | SMTP authentication credentials; keep the password secret |
+| `MAIL_FROM_ADDRESS` | Authorized sender address, normally `info@vumbua.co.ke` |
+| `MAIL_TO_ADDRESS` | Enquiry destination; set to `info@vumbua.co.ke` |
+| `MAIL_USE_STARTTLS` | Whether to upgrade the SMTP connection with STARTTLS (default `true`) |
+| `MAIL_TIMEOUT` | SMTP connection timeout in seconds (default `10`) |
 | `LOG_LEVEL` / `LOG_FILE` | Application log level and optional rotating log file |
 
 Do not commit `.env`, database files or live enquiry records.

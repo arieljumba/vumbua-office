@@ -57,6 +57,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .menu-toggle { display: none; }
 .flash-stack { position: fixed; z-index: 40; top: calc(var(--nav-height) + 14px); right: 24px; width: min(420px, calc(100% - 48px)); }
 .flash { padding: 14px 18px; color: #10251c; background: #d9f9e7; border-left: 3px solid #229b5b; box-shadow: 0 12px 30px #10162226; }
+.flash-error { color: #5b1d1d; background: #ffe5e2; border-left-color: #bd4238; }
 
 .hero { position: relative; min-height: min(790px, calc(100svh - var(--nav-height))); overflow: hidden; color: #f5f7fb; background: var(--navy); }
 .hero::before, .page-hero-dark::before, .insights-hero::before, .contact-hero::before { position: absolute; inset: 0; pointer-events: none; content: ""; background: radial-gradient(ellipse at 75% 48%, rgba(52, 94, 210, .15), transparent 38%), radial-gradient(ellipse at 88% 17%, rgba(63, 206, 226, .09), transparent 28%); }
