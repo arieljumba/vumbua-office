@@ -41,9 +41,21 @@
     <main id="main">
       {% with messages = get_flashed_messages(with_categories=true) %}
         {% if messages %}
-          <div class="flash-stack" role="status" aria-live="polite">
+          <div class="flash-stack">
             {% for category, message in messages %}
-              <p class="flash flash-{{ category }}">{{ message }}</p>
+              {% if category == "error" %}
+                <section class="flash flash-error" role="alert" aria-live="assertive">
+                  <strong class="flash-title">{{ message }}</strong>
+                  <p>Please reach us directly so we can respond:</p>
+                  <div class="flash-contacts">
+                    <a href="mailto:info@vumbua.co.ke">Email info@vumbua.co.ke</a>
+                    <a href="https://wa.me/254135831159" target="_blank" rel="noopener noreferrer">WhatsApp +254 135 831 159</a>
+                    <a href="tel:+254135831159">Call +254 135 831 159</a>
+                  </div>
+                </section>
+              {% else %}
+                <p class="flash flash-{{ category }}" role="status" aria-live="polite">{{ message }}</p>
+              {% endif %}
             {% endfor %}
           </div>
         {% endif %}

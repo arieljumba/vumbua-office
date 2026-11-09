@@ -71,9 +71,7 @@ def submit_enquiry():
     except EmailDeliveryError:
         current_app.logger.exception("Could not email a saved Vumbua enquiry")
         flash(
-            "We saved your enquiry, but couldn't email Vumbua just now. "
-            "Please contact us directly at info@vumbua.co.ke or on WhatsApp "
-            "so we can respond.",
+            "We saved your enquiry, but couldn't email Vumbua just now.",
             "error",
         )
     else:

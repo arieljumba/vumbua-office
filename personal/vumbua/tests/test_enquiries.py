@@ -115,7 +115,11 @@ def test_smtp_failure_is_reported_and_enquiry_remains_saved(client, app, monkeyp
     assert response.status_code == 200
     assert b"flash-error" in response.data
     assert b"email Vumbua just now" in response.data
-    assert b"Please contact us directly" in response.data
+    assert b"Please reach us directly" in response.data
+    assert b'href="mailto:info@vumbua.co.ke"' in response.data
+    assert b'href="https://wa.me/254135831159"' in response.data
+    assert b"WhatsApp +254 135 831 159" in response.data
+    assert b'href="tel:+254135831159"' in response.data
     with sqlite3.connect(app.config["DATABASE_PATH"]) as connection:
         assert connection.execute("SELECT COUNT(*) FROM enquiries").fetchone()[0] == 1
 
