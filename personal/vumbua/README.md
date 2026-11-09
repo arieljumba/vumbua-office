@@ -48,8 +48,11 @@ MAIL_SMTP_USERNAME=info@vumbua.co.ke
 MAIL_SMTP_PASSWORD=<mailbox password or app password>
 MAIL_FROM_ADDRESS=info@vumbua.co.ke
 MAIL_TO_ADDRESS=info@vumbua.co.ke
+MAIL_USE_SSL=false
 MAIL_USE_STARTTLS=true
 ```
+
+For implicit TLS (for example, port `465`), set `MAIL_USE_SSL=true` and `MAIL_USE_STARTTLS=false`. For STARTTLS (for example, port `587`), set `MAIL_USE_SSL=false` and `MAIL_USE_STARTTLS=true`.
 
 Attach a persistent Railway volume mounted at `/data` so enquiries and any refreshed market dataset survive new deployments. The app creates its SQLite database on startup. If no live market source has been configured, Market Insights continues to use and label the bundled synthetic practice records.
 
@@ -96,7 +99,7 @@ Filters are applied server-side for location, role, skill, experience and date r
 
 The enquiry form is protected by Flask-WTF CSRF tokens, validates fields server-side, and saves submissions to SQLite. Database access and the schema live behind `app/database.py`; form values are represented by `app/models.py`. This boundary keeps the application logic separate from the current SQLite driver when a PostgreSQL repository/driver is introduced.
 
-After saving an enquiry, the application sends a plain-text email to `MAIL_TO_ADDRESS` through the configured SMTP server. `MAIL_FROM_ADDRESS` should be an address authorized by the mailbox provider, and `MAIL_USE_STARTTLS` defaults to `true`. If the SMTP server is missing or unavailable, the form reports the delivery problem without discarding the saved enquiry.
+After saving an enquiry, the application sends a plain-text email to `MAIL_TO_ADDRESS` through the configured SMTP server. `MAIL_FROM_ADDRESS` should be an address authorized by the mailbox provider. Choose either implicit TLS with `MAIL_USE_SSL` or STARTTLS with `MAIL_USE_STARTTLS`; they cannot both be enabled. If the SMTP server is missing or unavailable, the form reports the delivery problem without discarding the saved enquiry.
 
 For production, set `DATABASE_PATH` to a persistent absolute path. SQLite is suitable for the initial single-host deployment; use PostgreSQL for multi-instance scaling or higher write concurrency. Enquiry data should be handled with appropriate retention, access controls and backups.
 
@@ -117,7 +120,8 @@ Copy `.env.example` to `.env`. Important settings:
 | `MAIL_SMTP_USERNAME` / `MAIL_SMTP_PASSWORD` | SMTP authentication credentials; keep the password secret |
 | `MAIL_FROM_ADDRESS` | Authorized sender address, normally `info@vumbua.co.ke` |
 | `MAIL_TO_ADDRESS` | Enquiry destination; set to `info@vumbua.co.ke` |
-| `MAIL_USE_STARTTLS` | Whether to upgrade the SMTP connection with STARTTLS (default `true`) |
+| `MAIL_USE_SSL` | Use implicit TLS from connection start (default `false`) |
+| `MAIL_USE_STARTTLS` | Upgrade the SMTP connection with STARTTLS (default `true`; disable when implicit TLS is enabled) |
 | `MAIL_TIMEOUT` | SMTP connection timeout in seconds (default `10`) |
 | `LOG_LEVEL` / `LOG_FILE` | Application log level and optional rotating log file |
 

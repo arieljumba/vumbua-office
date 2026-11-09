@@ -61,6 +61,8 @@ def test_valid_enquiry_is_emailed_to_vumbua(client, app, monkeypatch):
         MAIL_SMTP_HOST="smtp.example.com",
         MAIL_SMTP_USERNAME="info@vumbua.co.ke",
         MAIL_SMTP_PASSWORD="test-password",
+        MAIL_USE_SSL=False,
+        MAIL_USE_STARTTLS=True,
     )
     sent_messages = []
 
@@ -98,6 +100,63 @@ def test_valid_enquiry_is_emailed_to_vumbua(client, app, monkeypatch):
     assert sent_message["Reply-To"] == "amina@example.com"
     assert "Amina Wanjiku" in sent_message.get_content()
     assert VALID_ENQUIRY["reason"] in sent_message.get_content()
+
+
+def test_implicit_tls_enquiry_uses_smtp_ssl(client, app, monkeypatch):
+    app.config.update(
+        MAIL_SUPPRESS_SEND=False,
+        MAIL_SMTP_HOST="smtp.example.com",
+        MAIL_SMTP_PORT=465,
+        MAIL_SMTP_USERNAME="info@vumbua.co.ke",
+        MAIL_SMTP_PASSWORD="test-password",
+        MAIL_USE_SSL=True,
+        MAIL_USE_STARTTLS=False,
+    )
+    sent_messages = []
+
+    class FakeSMTP_SSL:
+        def __init__(self, host, port, timeout, context):
+            assert (host, port, timeout) == ("smtp.example.com", 465, 10)
+            assert isinstance(context, mail.ssl.SSLContext)
+
+        def __enter__(self):
+            return self
+
+        def __exit__(self, *args):
+            return False
+
+        def ehlo(self):
+            pass
+
+        def login(self, username, password):
+            assert (username, password) == ("info@vumbua.co.ke", "test-password")
+
+        def send_message(self, message):
+            sent_messages.append(message)
+
+    monkeypatch.setattr(mail.smtplib, "SMTP_SSL", FakeSMTP_SSL)
+
+    response = client.post("/contact", data=VALID_ENQUIRY, follow_redirects=True)
+
+    assert response.status_code == 200
+    assert b"Your enquiry has been sent to Vumbua" in response.data
+    assert len(sent_messages) == 1
+
+
+def test_conflicting_smtp_tls_modes_are_rejected(client, app):
+    app.config.update(
+        MAIL_SUPPRESS_SEND=False,
+        MAIL_SMTP_HOST="smtp.example.com",
+        MAIL_SMTP_USERNAME="info@vumbua.co.ke",
+        MAIL_SMTP_PASSWORD="test-password",
+        MAIL_USE_SSL=True,
+        MAIL_USE_STARTTLS=True,
+    )
+
+    response = client.post("/contact", data=VALID_ENQUIRY, follow_redirects=True)
+
+    assert response.status_code == 200
+    assert b"flash-error" in response.data
 
 
 def test_smtp_failure_is_reported_and_enquiry_remains_saved(client, app, monkeypatch):

@@ -28,6 +28,10 @@ def send_enquiry_email(enquiry: Enquiry) -> None:
         raise EmailDeliveryError(
             "Both MAIL_SMTP_USERNAME and MAIL_SMTP_PASSWORD must be configured."
         )
+    if config["MAIL_USE_SSL"] and config["MAIL_USE_STARTTLS"]:
+        raise EmailDeliveryError(
+            "MAIL_USE_SSL and MAIL_USE_STARTTLS cannot both be enabled."
+        )
 
     message = EmailMessage()
     message["Subject"] = f"New Vumbua website enquiry: {enquiry.enquiry_type}"
@@ -54,13 +58,20 @@ def send_enquiry_email(enquiry: Enquiry) -> None:
     )
 
     try:
-        with smtplib.SMTP(
+        smtp_client = (
+            smtplib.SMTP_SSL if config["MAIL_USE_SSL"] else smtplib.SMTP
+        )
+        smtp_options = (
+            {"context": ssl.create_default_context()} if config["MAIL_USE_SSL"] else {}
+        )
+        with smtp_client(
             host,
             config["MAIL_SMTP_PORT"],
             timeout=config["MAIL_TIMEOUT"],
+            **smtp_options,
         ) as server:
             server.ehlo()
-            if config["MAIL_USE_STARTTLS"]:
+            if not config["MAIL_USE_SSL"] and config["MAIL_USE_STARTTLS"]:
                 server.starttls(context=ssl.create_default_context())
                 server.ehlo()
             if username:

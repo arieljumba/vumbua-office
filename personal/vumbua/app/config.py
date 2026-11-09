@@ -25,6 +25,12 @@ class Config:
     MAIL_SMTP_PASSWORD = os.getenv("MAIL_SMTP_PASSWORD", "")
     MAIL_FROM_ADDRESS = os.getenv("MAIL_FROM_ADDRESS", "info@vumbua.co.ke")
     MAIL_TO_ADDRESS = os.getenv("MAIL_TO_ADDRESS", "info@vumbua.co.ke")
+    MAIL_USE_SSL = os.getenv("MAIL_USE_SSL", "false").lower() in {
+        "1",
+        "true",
+        "yes",
+        "on",
+    }
     MAIL_USE_STARTTLS = os.getenv("MAIL_USE_STARTTLS", "true").lower() in {
         "1",
         "true",
